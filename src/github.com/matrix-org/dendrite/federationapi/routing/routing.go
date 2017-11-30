@@ -26,11 +26,13 @@ import (
 	"github.com/matrix-org/dendrite/roomserver/api"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/util"
+        "google.golang.org/grpc"
 )
 
 const (
 	pathPrefixV2Keys       = "/_matrix/key/v2"
 	pathPrefixV1Federation = "/_matrix/federation/v1"
+	pathGRPCFederation     = "/_matrix/federation/grpc"
 )
 
 // Setup registers HTTP handlers with the given ServeMux.
@@ -46,6 +48,15 @@ func Setup(
 ) {
 	v2keysmux := apiMux.PathPrefix(pathPrefixV2Keys).Subrouter()
 	v1fedmux := apiMux.PathPrefix(pathPrefixV1Federation).Subrouter()
+
+        // Init gRPC Handler
+        grpcServer := grpc.NewServer()
+
+        // Register here grpc Handler:
+        //TODO
+
+        // Let the gRPC Server listen to the apiPoint
+        apiMux.Handle(pathGRPCFederation, grpcServer)
 
 	localKeys := common.MakeExternalAPI("localkeys", func(req *http.Request) util.JSONResponse {
 		return LocalKeys(cfg)
