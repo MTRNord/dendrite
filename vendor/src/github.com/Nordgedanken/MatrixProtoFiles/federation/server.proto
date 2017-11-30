@@ -1,0 +1,52 @@
+syntax = "proto3";
+package matrixProtos_Server;
+
+service FederationService {
+    rpc Versions (VersionRequest) returns (VersionsResponse);
+    rpc Keys (KeyRequest) returns (KeyResponse);
+}
+
+message VersionRequest {
+}
+
+message VersionsResponse {
+    repeated Version versions = 1;
+}
+
+message Version {
+    string name = 1;
+    string version = 2;
+}
+
+message KeyRequest {
+}
+
+message KeyResponse {
+    repeated OldVerifyKey old_verify_keys = 1;
+    string server_name = 2;
+    repeated Signature signatures = 3;
+    repeated TlsFingerprint tls_fingerprints = 4;
+    int64 valid_until_ts = 5;
+    repeated VerifyKey verify_keys = 6;
+}
+
+message OldVerifyKey {
+    string type = 1;
+    int64  expiredTS = 2;
+    string key = 3;
+}
+
+message Signature {
+    string server_name = 1;
+    string type = 2;
+    string signature = 3;
+}
+
+message TlsFingerprint {
+    string sha256 = 1;
+}
+
+message VerifyKey {
+    string type = 1;
+    string key = 3;
+}

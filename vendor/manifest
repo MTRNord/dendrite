@@ -2,6 +2,19 @@
 	"version": 0,
 	"dependencies": [
 		{
+			"importpath": "cloud.google.com/go/compute/metadata",
+			"repository": "https://code.googlesource.com/gocloud",
+			"revision": "28b507a1143b9134490384bc95088187dde1b96a",
+			"branch": "master",
+			"path": "/compute/metadata"
+		},
+		{
+			"importpath": "github.com/Nordgedanken/MatrixProtoFiles",
+			"repository": "https://github.com/Nordgedanken/MatrixProtoFiles",
+			"revision": "1da9a86522ce6d1390c3f136c6951f434acc1356",
+			"branch": "master"
+		},
+		{
 			"importpath": "github.com/Shopify/sarama",
 			"repository": "https://github.com/Shopify/sarama",
 			"revision": "574d3147eee384229bf96a5d12c207fe7b5234f3",
@@ -78,11 +91,38 @@
 			"branch": "master"
 		},
 		{
+			"importpath": "github.com/golang/glog",
+			"repository": "https://github.com/golang/glog",
+			"revision": "23def4e6c14b4da8ac2ed8007337bc5eb5007998",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/golang/mock/gomock",
+			"repository": "https://github.com/golang/mock",
+			"revision": "747e9e6390e12b0d987c261bdc89a51e76b9f5fc",
+			"branch": "master",
+			"path": "/gomock"
+		},
+		{
 			"importpath": "github.com/golang/protobuf/proto",
 			"repository": "https://github.com/golang/protobuf",
 			"revision": "8ee79997227bf9b34611aee7946ae64735e6fd93",
 			"branch": "master",
 			"path": "/proto"
+		},
+		{
+			"importpath": "github.com/golang/protobuf/protoc-gen-go/descriptor",
+			"repository": "https://github.com/golang/protobuf",
+			"revision": "1e59b77b52bf8e4b449a57e6f79f21226d571845",
+			"branch": "master",
+			"path": "/protoc-gen-go/descriptor"
+		},
+		{
+			"importpath": "github.com/golang/protobuf/ptypes",
+			"repository": "https://github.com/golang/protobuf",
+			"revision": "1e59b77b52bf8e4b449a57e6f79f21226d571845",
+			"branch": "master",
+			"path": "/ptypes"
 		},
 		{
 			"importpath": "github.com/golang/snappy",
@@ -391,6 +431,20 @@
 			"path": "/context"
 		},
 		{
+			"importpath": "golang.org/x/net/http2",
+			"repository": "https://go.googlesource.com/net",
+			"revision": "a8b9294777976932365dabb6640cf1468d95c70f",
+			"branch": "master",
+			"path": "/http2"
+		},
+		{
+			"importpath": "golang.org/x/net/idna",
+			"repository": "https://go.googlesource.com/net",
+			"revision": "a8b9294777976932365dabb6640cf1468d95c70f",
+			"branch": "master",
+			"path": "/idna"
+		},
+		{
 			"importpath": "golang.org/x/net/internal/iana",
 			"repository": "https://go.googlesource.com/net",
 			"revision": "0a9397675ba34b2845f758fe3cd68828369c6517",
@@ -403,6 +457,13 @@
 			"revision": "0a9397675ba34b2845f758fe3cd68828369c6517",
 			"branch": "master",
 			"path": "/internal/socket"
+		},
+		{
+			"importpath": "golang.org/x/net/internal/timeseries",
+			"repository": "https://go.googlesource.com/net",
+			"revision": "a8b9294777976932365dabb6640cf1468d95c70f",
+			"branch": "master",
+			"path": "/internal/timeseries"
 		},
 		{
 			"importpath": "golang.org/x/net/ipv4",
@@ -419,11 +480,79 @@
 			"path": "/ipv6"
 		},
 		{
+			"importpath": "golang.org/x/net/lex/httplex",
+			"repository": "https://go.googlesource.com/net",
+			"revision": "a8b9294777976932365dabb6640cf1468d95c70f",
+			"branch": "master",
+			"path": "/lex/httplex"
+		},
+		{
+			"importpath": "golang.org/x/net/trace",
+			"repository": "https://go.googlesource.com/net",
+			"revision": "a8b9294777976932365dabb6640cf1468d95c70f",
+			"branch": "master",
+			"path": "/trace"
+		},
+		{
+			"importpath": "golang.org/x/oauth2",
+			"repository": "https://go.googlesource.com/oauth2",
+			"revision": "f95fa95eaa936d9d87489b15d1d18b97c1ba9c28",
+			"branch": "master"
+		},
+		{
 			"importpath": "golang.org/x/sys/unix",
 			"repository": "https://go.googlesource.com/sys",
 			"revision": "43eea11bc92608addb41b8a406b0407495c106f6",
 			"branch": "master",
 			"path": "/unix"
+		},
+		{
+			"importpath": "golang.org/x/text/secure/bidirule",
+			"repository": "https://go.googlesource.com/text",
+			"revision": "75cc3cad82b5f47d3fb229ddda8c5167da14f294",
+			"branch": "master",
+			"path": "/secure/bidirule"
+		},
+		{
+			"importpath": "golang.org/x/text/transform",
+			"repository": "https://go.googlesource.com/text",
+			"revision": "75cc3cad82b5f47d3fb229ddda8c5167da14f294",
+			"branch": "master",
+			"path": "/transform"
+		},
+		{
+			"importpath": "golang.org/x/text/unicode/bidi",
+			"repository": "https://go.googlesource.com/text",
+			"revision": "75cc3cad82b5f47d3fb229ddda8c5167da14f294",
+			"branch": "master",
+			"path": "/unicode/bidi"
+		},
+		{
+			"importpath": "golang.org/x/text/unicode/norm",
+			"repository": "https://go.googlesource.com/text",
+			"revision": "75cc3cad82b5f47d3fb229ddda8c5167da14f294",
+			"branch": "master",
+			"path": "/unicode/norm"
+		},
+		{
+			"importpath": "google.golang.org/genproto/googleapis/rpc/status",
+			"repository": "https://github.com/google/go-genproto",
+			"revision": "7f0da29060c682909f650ad8ed4e515bd74fa12a",
+			"branch": "master",
+			"path": "/googleapis/rpc/status"
+		},
+		{
+			"importpath": "google.golang.org/grpc",
+			"repository": "https://github.com/grpc/grpc-go",
+			"revision": "a62701e4aa1d276bec70311251d62a478404d63f",
+			"branch": "master"
+		},
+		{
+			"importpath": "google.golang.org/grpc/testdata",
+			"repository": "https://github.com/grpc/grpc-go",
+			"revision": "a62701e4aa1d276bec70311251d62a478404d63f",
+			"branch": "master",
+			"path": "/testdata"
 		},
 		{
 			"importpath": "gopkg.in/Shopify/sarama.v1",
