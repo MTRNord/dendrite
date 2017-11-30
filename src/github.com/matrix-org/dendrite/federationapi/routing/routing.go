@@ -26,7 +26,7 @@ import (
 	"github.com/matrix-org/dendrite/roomserver/api"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/util"
-        "google.golang.org/grpc"
+	"google.golang.org/grpc"
 )
 
 const (
@@ -49,14 +49,14 @@ func Setup(
 	v2keysmux := apiMux.PathPrefix(pathPrefixV2Keys).Subrouter()
 	v1fedmux := apiMux.PathPrefix(pathPrefixV1Federation).Subrouter()
 
-        // Init gRPC Handler
-        grpcServer := grpc.NewServer()
+	// Init gRPC Handler
+	grpcServer := grpc.NewServer()
 
-        // Register here grpc Handler:
-        //TODO
+	// Register here grpc Handler:
+	//TODO
 
-        // Let the gRPC Server listen to the apiPoint
-        apiMux.Handle(pathGRPCFederation, grpcServer)
+	// Let the gRPC Server listen to the apiPoint
+	apiMux.Handle(pathGRPCFederation, grpcServer)
 
 	localKeys := common.MakeExternalAPI("localkeys", func(req *http.Request) util.JSONResponse {
 		return LocalKeys(cfg)
