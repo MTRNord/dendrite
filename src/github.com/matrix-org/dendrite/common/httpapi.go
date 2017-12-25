@@ -11,6 +11,7 @@ import (
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
 	"github.com/prometheus/client_golang/prometheus"
+	log "github.com/sirupsen/logrus"
 )
 
 // MakeAuthAPI turns a util.JSONRequestHandler function into an http.Handler which checks the access token in the request.
@@ -66,6 +67,7 @@ func MakeInternalAPI(metricsName string, f func(*http.Request) util.JSONResponse
 }
 
 // MakeFedAPI makes an http.Handler that checks matrix federation authentication.
+// It also checks if we got a Protobuf Request or a HTTP request by checking for a "Upgrade: protobuf" Header
 func MakeFedAPI(
 	metricsName string,
 	serverName gomatrixserverlib.ServerName,
@@ -73,11 +75,18 @@ func MakeFedAPI(
 	f func(*http.Request, *gomatrixserverlib.FederationRequest) util.JSONResponse,
 ) http.Handler {
 	h := func(req *http.Request) util.JSONResponse {
-		fedReq, errResp := gomatrixserverlib.VerifyHTTPRequest(
-			req, time.Now(), serverName, keyRing,
-		)
-		if fedReq == nil {
-			return errResp
+		var fedReq *gomatrixserverlib.FederationRequest
+		if req.Header.Get("Connection ") == "Upgrade" && req.Header.Get("Upgrade") == "protobuf" {
+			log.Infoln("We got a Protobuf Request :O Handle it!")
+		} else {
+			log.Infoln("We got a HTTP Request :O Handle it!")
+			var errResp util.JSONResponse
+			fedReq, errResp = gomatrixserverlib.VerifyHTTPRequest(
+				req, time.Now(), serverName, keyRing,
+			)
+			if fedReq == nil {
+				return errResp
+			}
 		}
 		return f(req, fedReq)
 	}
